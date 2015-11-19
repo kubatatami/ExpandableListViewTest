@@ -1,0 +1,43 @@
+{
+  "groups": [
+    {
+      "id": 1,
+      "name": "Group 1"
+    },
+    {
+      "id": 3,
+      "name": "Group 3"
+    },
+    {
+      "id": 2,
+      "name": "Group 2"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "group_id": 1,
+      "name": "Product 1"
+    },
+    {
+      "id": 22,
+      "group_id": 2,
+      "name": "Product 35 with very long name that might not fit into single line"
+    },
+    {
+      "id": 72,
+      "group_id": 2,
+      "name": "Product 73"
+    },
+    {
+      "id": 17,
+      "group_id": 1,
+      "name": "Product 17"
+    },
+    {
+      "id": 31,
+      "group_id": 1,
+      "name": "Product 81"
+    }
+  ]
+}
