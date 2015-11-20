@@ -1,10 +1,7 @@
 package com.github.kubatatami.expandablelistviewtest.activities;
 
 import android.content.Context;
-import android.support.annotation.UiThread;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 
 import com.github.kubatatami.expandablelistviewtest.R;
@@ -20,6 +17,7 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ItemLongClick;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private ProductsAdapter adapter;
 
     @ItemLongClick(R.id.expandable_list_view)
-    protected void onItemLongClick(int position){
+    protected void onItemLongClick(int position) {
         long packagePosition = expandableListView.getExpandableListPosition(position);
         int groupPosition = ExpandableListView.getPackedPositionGroup(packagePosition);
         int childPosition = ExpandableListView.getPackedPositionChild(packagePosition);
