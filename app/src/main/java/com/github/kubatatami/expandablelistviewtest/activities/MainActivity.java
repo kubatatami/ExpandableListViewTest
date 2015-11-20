@@ -19,6 +19,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ItemLongClick;
 import org.androidannotations.annotations.ViewById;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -34,25 +35,19 @@ public class MainActivity extends AppCompatActivity {
 
     private ProductsAdapter adapter;
 
-    @AfterViews
-    protected void initListener() {
-        expandableListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                long packagePosition = expandableListView.getExpandableListPosition(position);
-                int groupPosition = ExpandableListView.getPackedPositionGroup(packagePosition);
-                int childPosition = ExpandableListView.getPackedPositionChild(packagePosition);
+    @ItemLongClick(R.id.expandable_list_view)
+    protected void onItemLongClick(int position){
+        long packagePosition = expandableListView.getExpandableListPosition(position);
+        int groupPosition = ExpandableListView.getPackedPositionGroup(packagePosition);
+        int childPosition = ExpandableListView.getPackedPositionChild(packagePosition);
 
-                if (childPosition != -1) {
-                    showProductDialog(groupPosition, childPosition);
-                } else {
-                    Group group = adapter.getGroup(groupPosition);
-                    float degree = group.getId() % 2 == 0 ? 360f : -360f;
-                    expandableListView.animate().rotationBy(degree).setDuration(1000).start();
-                }
-                return true;
-            }
-        });
+        if (childPosition != -1) {
+            showProductDialog(groupPosition, childPosition);
+        } else {
+            Group group = adapter.getGroup(groupPosition);
+            float degree = group.getId() % 2 == 0 ? 360f : -360f;
+            expandableListView.animate().rotationBy(degree).setDuration(1000).start();
+        }
     }
 
     @AfterViews
