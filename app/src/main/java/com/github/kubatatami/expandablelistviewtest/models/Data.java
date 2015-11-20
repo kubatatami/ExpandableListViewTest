@@ -11,7 +11,6 @@ public class Data {
 
     private List<Group> groups;
 
-
     public List<Item> getItems() {
         return items;
     }

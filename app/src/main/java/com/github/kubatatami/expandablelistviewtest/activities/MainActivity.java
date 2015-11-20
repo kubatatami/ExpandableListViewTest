@@ -27,6 +27,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
 
+    private final static int ANIMATION_DURATION = 1000;
+
     @ViewById(R.id.expandable_list_view)
     protected ExpandableListView expandableListView;
 
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Group group = adapter.getGroup(groupPosition);
             float degree = group.getId() % 2 == 0 ? 360f : -360f;
-            expandableListView.animate().rotationBy(degree).setDuration(1000).start();
+            expandableListView.animate().rotationBy(degree).setDuration(ANIMATION_DURATION).start();
         }
     }
 
