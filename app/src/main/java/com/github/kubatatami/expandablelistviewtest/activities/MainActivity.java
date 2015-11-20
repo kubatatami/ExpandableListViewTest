@@ -11,6 +11,7 @@ import com.github.kubatatami.expandablelistviewtest.dialogs.OkDialogFragment;
 import com.github.kubatatami.expandablelistviewtest.dialogs.OkDialogFragment_;
 import com.github.kubatatami.expandablelistviewtest.models.Data;
 import com.github.kubatatami.expandablelistviewtest.models.Group;
+import com.github.kubatatami.expandablelistviewtest.models.Item;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -64,9 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void showProductDialog(int groupPosition, int childPosition) {
         Group group = adapter.getGroup(groupPosition);
+        Item item = adapter.getChild(groupPosition, childPosition);
         OkDialogFragment dialog = OkDialogFragment_.builder()
                 .groupName(group.getName())
-                .itemName(group.getItems().get(childPosition).getName()).build();
+                .itemName(item.getName()).build();
         dialog.show(getSupportFragmentManager(), "OkDialog");
     }
 

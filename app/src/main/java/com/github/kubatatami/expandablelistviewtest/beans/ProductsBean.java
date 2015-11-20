@@ -45,13 +45,13 @@ public class ProductsBean {
 
     private void prepareData(Data data) {
         //create group map
-        Map<Long, Group> result = new HashMap<>(data.getGroups().size());
+        Map<Long, Group> groupMap = new HashMap<>(data.getGroups().size());
         for (Group group : data.getGroups()) {
-            result.put(group.getId(), group);
+            groupMap.put(group.getId(), group);
         }
-        //put item into group
+        //put items into groups
         for (Item item : data.getItems()) {
-            result.get(item.getGroupId()).addItem(item);
+            groupMap.get(item.getGroupId()).addItem(item);
         }
         //remove empty groups
         for (int i = data.getGroups().size() - 1; i > 0; i--) {
