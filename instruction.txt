@@ -1,0 +1,21 @@
+Nale¿y stworzyæ aplikacjê sk³adaj¹c¹ siê z pojedynczego ekranu. Na ekranie tym powinna znajdowaæ siê tylko i wy³¹cznie lista, zawieraj¹ca grupy. Grupy powinno daæ sie wcisn¹æ w celu ich rozwiniêcia i pokazania zawartych w danej groupie itemów.
+
+Aplikacja powinna wczytaæ dane z pliku data.json zawartego jako asset. 
+Aplikacja nie powinna wyœwietlaæ pustych grup.
+Wykonanie gestu Long Press na grupie o parzystym id, powinno spowodowaæ obrót listy wzglêdem œrodka ekranu zgodnie z ruchem wskazówek zegara o 360 stopni w ci¹gu sekundy. W przypadku grup o nieparzystym id, obrót powinien odbyæ siê w kierunku przeciwnym.
+
+Gest Long Press wykonany na elemencie (item), powinien pokazaæ dialog z nazw¹ grupy jako tytu³ i nazw¹ itemu jako treœæ. Do tego dialog powinien zawieraæ przycisk "OK", powoduj¹cy jego schowanie.
+
+Layout:
+Element listy - grupa: 
+- wysokoœc 48dp
+- t³o #FFFFFF, stan wciœniêty #BABABA
+- tekst o wysokoœci 16dp, kolor: #333333, odstêp od lewej krawêdzi ekranu: 36dp, odstêp od prawej krawêdzi ekranu: 16dp, font: za³¹czona czcionka Roboto-Light; pojedyncza linia, bez ³amania tekstu; wyrównanie: left i center vertical
+
+Element listy - item
+- wysokoœc 48dp
+- t³o #EEEEEE, stan wciœniêty #BABABA
+- tekst o wysokoœci 16dp, kolor: #333333, odstêp od lewej krawêdzi ekranu: 36dp, odstêp od prawej krawêdzi ekranu: 16dp, font: za³¹czona czcionka Roboto-Light; pojedyncza linia, bez ³amania tekstu; wyrównanie: left i center vertical
+
+Parametry elementów listy, w tym równie¿ widgetów do wyœwietlenia tekstu, powinny byæ zadeklarowane w stylach aplikacji, nie w pliku z layoutem.
+Wersja Androida dowolna.
