@@ -28,7 +28,7 @@ public class ProductsBean {
 
     private Data data;
 
-    public Data getProducts() {
+    public synchronized Data getProducts() {
         if (data == null) {
             try {
                 InputStream inputStream = context.getAssets().open(DATA_FILE_PATH);

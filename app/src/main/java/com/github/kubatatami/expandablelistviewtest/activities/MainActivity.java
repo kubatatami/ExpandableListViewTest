@@ -1,5 +1,6 @@
 package com.github.kubatatami.expandablelistviewtest.activities;
 
+import android.content.Context;
 import android.support.annotation.UiThread;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,6 +21,8 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
 
@@ -36,8 +39,18 @@ public class MainActivity extends AppCompatActivity {
         expandableListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                long packagePosition = expandableListView.getExpandableListPosition(position);
+                int groupPosition = ExpandableListView.getPackedPositionGroup(packagePosition);
+                int childPosition = ExpandableListView.getPackedPositionChild(packagePosition);
 
-                return false;
+                if (childPosition != -1) {
+                    showProductDialog(groupPosition, childPosition);
+                } else {
+                    Group group = adapter.getGroup(groupPosition);
+                    float degree = group.getId() % 2 == 0 ? 360f : -360f;
+                    expandableListView.animate().rotationBy(degree).setDuration(1000).start();
+                }
+                return true;
             }
         });
     }
@@ -60,5 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 .groupName(group.getName())
                 .itemName(group.getItems().get(childPosition).getName()).build();
         dialog.show(getSupportFragmentManager(), "OkDialog");
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
